@@ -27,9 +27,9 @@ if ($_SESSION["user_role"] != "waiters") {
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
     <title>Waiters Order Resto</title>
   </head>
-<nav class="navbar navbar-expand-lg navbar-light bg-dark text-white">
+<nav class="navbar navbar-expand-lg navbar-light text-white"style="background-color:black">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#"><img width="160" class="img=fluid" src="https://1.bp.blogspot.com/-usoVV2xzqkQ/YKjFznhCZvI/AAAAAAAAOD8/X-TFgXoCZJgwSluV9C3TWFfJBiWbp6soACLcBGAsYHQ/s299/bang%2Bresto.png"/></a>
+    <a class="navbar-brand" href="#"><img width="50" class="img=fluid" src="../../img/logo.png"/></a>
 
         <a class="nav-link text-warning" href="index.php">
      <i class="fas fa-concierge-bell"></i>

@@ -542,4 +542,15 @@ nav #close {
   .about .container .about-content {
     text-align: center;
   }
+  .google-maps{
+    padding-bottom: 50%;
+    position: relative;
+  }
+  .google-maps iframe{
+    height: 100%;
+    width: 100%;
+    left: 0;
+    top: 0;
+    position:absolute;
+  }
 }
