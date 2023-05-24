@@ -1,21 +1,35 @@
-<?php include("../functions.php");
-if ((!isset($_SESSION['uid']) && !isset($_SESSION['username']) && isset($_SESSION['user_level']))) header("Location: login.php");
-if ($_SESSION['user_level'] != "staff") header("Location: login.php");
+<?php include "../functions.php";
+if (
+  !isset($_SESSION["uid"]) &&
+  !isset($_SESSION["username"]) &&
+  isset($_SESSION["user_level"])
+) {
+  header("Location: login.php");
+}
+if ($_SESSION["user_level"] != "staff") {
+  header("Location: login.php");
+}
 function getStatus()
 {
-    global $sqlconnection;
-    $checkOnlineQuery = "SELECT status FROM tbl_staff WHERE staffID = {$_SESSION['uid']}";
-    if ($result = $sqlconnection->query($checkOnlineQuery)) {
-        if ($row = $result->fetch_array(MYSQLI_ASSOC)) {
-            return $row['status'];
-        }
-    } else {
-        echo "Something wrong the query!";
-        echo $sqlconnection->error;
+  global $sqlconnection;
+  $checkOnlineQuery = "SELECT status FROM tbl_staff WHERE staffID = {$_SESSION["uid"]}";
+  if ($result = $sqlconnection->query($checkOnlineQuery)) {
+    if ($row = $result->fetch_array(MYSQLI_ASSOC)) {
+      return $row["status"];
     }
-} ?> <?php include 'header.php'; ?> <div class="col-12 col-md-12 p-3 p-md-3"></div>
-<div class="col-12 col-md-6 p-3 p-md-5 bg-warning text-center"> <img width="360" class="img-fluid" src="../image/bg-2.png" /><br /> Hai : <?php echo $_SESSION['username'] ?> , status <?php if (getStatus() == 'Online') echo "<input type='submit' class='btn btn-success' name='btnStatus' value='Online'>";
-                                                                                                                                                                                        else echo "<input type='submit' class='btn btn-danger myBtn' name='btnStatus' value='Offline'>" ?> <br /></div>
+  } else {
+    echo "Something wrong the query!";
+    echo $sqlconnection->error;
+  }
+}
+?> <?php include "header.php"; ?> <div class="col-12 col-md-12 p-3 p-md-3"></div>
+<div class="col-12 col-md-6 p-3 p-md-5 bg-warning text-center"> <img width="360" class="img-fluid" src="../../img/logo.png" /><br><br /> Hai : <?php echo $_SESSION[
+  "username"
+]; ?> , status <?php if (getStatus() == "Online") {
+   echo "<input type='submit' class='btn btn-success' name='btnStatus' value='Online'>";
+ } else {
+   echo "<input type='submit' class='btn btn-danger myBtn' name='btnStatus' value='Offline'>";
+ } ?> <br /></div>
 <div class="col-12 col-md-6 p-3 p-md-5 bg-dark text-white">
     <div class="row">
         <div class="col-md-12 col-12 text-white">
@@ -44,4 +58,4 @@ function getStatus()
     setInterval(function() {
         refreshTableOrder();
     }, 3000);
-</script> <?php include 'footer.php'; ?>
+</script> <?php include "footer.php"; ?>

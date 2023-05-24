@@ -1,17 +1,22 @@
 <?php
-	include("../functions.php");
+include "../functions.php";
 
-  if((!isset($_SESSION['uid']) && !isset($_SESSION['username']) && isset($_SESSION['user_level'])) ) 
-    header("Location: login.php");
+if (
+  !isset($_SESSION["uid"]) &&
+  !isset($_SESSION["username"]) &&
+  isset($_SESSION["user_level"])
+) {
+  header("Location: login.php");
+}
 
-  if($_SESSION['user_level'] != "staff")
-    header("Location: login.php");
+if ($_SESSION["user_level"] != "staff") {
+  header("Location: login.php");
+}
 
-  if($_SESSION['user_role'] != "waiters"){
-    echo ("<script>window.alert('Available for waiters only!'); window.location.href='index.php';</script>");
-    exit();
-  }
-
+if ($_SESSION["user_role"] != "waiters") {
+  echo "<script>window.alert('Available for waiters only!'); window.location.href='index.php';</script>";
+  exit();
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -45,28 +50,31 @@
           
                   <table class="table text-center" width="100%" cellspacing="0">
                   	<tr>
-                  	<?php 
-						$menuQuery = "SELECT * FROM tbl_menu";
+                  	<?php
+                   $menuQuery = "SELECT * FROM tbl_menu";
 
-						if ($menuResult = $sqlconnection->query($menuQuery)) {
-							$counter = 0;
-							while($menuRow = $menuResult->fetch_array(MYSQLI_ASSOC)) { 
-								if ($counter >=4) {
-									echo "</tr>";
-									$counter = 0;
-								}
+                   if ($menuResult = $sqlconnection->query($menuQuery)) {
+                     $counter = 0;
+                     while ($menuRow = $menuResult->fetch_array(MYSQLI_ASSOC)) {
 
-								if($counter == 0) {
-									echo "<tr>";
-								} 
-								?>
-								<td class="bg-dark"><button style="margin-bottom:4px;white-space: normal;" class="btn btn-warning" onclick="displayItem(<?php echo $menuRow['menuID']?>)"><?php echo $menuRow['menuName']?>  <i class="fas fa-utensils"></i></button></td>
-							<?php
+                       if ($counter >= 4) {
+                         echo "</tr>";
+                         $counter = 0;
+                       }
 
-							$counter++;
-							}
-						}
-					?>
+                       if ($counter == 0) {
+                         echo "<tr>";
+                       }
+                       ?>
+								<td class="bg-dark"><button style="margin-bottom:4px;white-space: normal;" class="btn btn-warning" onclick="displayItem(<?php echo $menuRow[
+          "menuID"
+        ]; ?>)"><?php echo $menuRow[
+  "menuName"
+]; ?>  <i class="fas fa-utensils"></i></button></td>
+							<?php $counter++;
+                     }
+                   }
+                   ?>
 					</tr>
                   </table>
                   <table id="tblItem" class="table table-bordered text-center bg-warning text-white" width="100%" cellspacing="0"></table>
@@ -100,13 +108,6 @@
                 </div>
               </div>
             </div>
-
-
-<div class="col-12 col-md-12 p-3 p-md-5 bg-white border border-white text-center">
-Copyright © <a href="https://axcora.com">www.axcora.com</a>
-</div>
-
-
       </div>
       <!-- /.content-wrapper -->
 

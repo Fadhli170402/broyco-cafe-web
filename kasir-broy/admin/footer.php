@@ -9,9 +9,6 @@
         </div>
     </div>
 </div>
-</div>
-<div class="col-12 col-md-12 p-3 p-md-5 bg-white border border-white text-center"> Copyright © <a href="https://www.youtube.com/c/SerdaduCoding/videos">SerdaduCoding</a></div>
-</div>
 <script src="vendor/jquery/jquery.min.js"></script>
 <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 <script src='https://cdn.jsdelivr.net/npm/vue/dist/vue.js'></script>
